@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+:root {
+  --color-primary: #166534;
+  --color-primary-light: #22c55e;
+  --color-accent: #d4af37;
+  --background: #f8fafc;
+  --surface: #ffffff;
+  --foreground: #0f172a;
+  --muted: #64748b;
+  --border: #e2e8f0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --background: #0f172a;
+    --surface: #1e293b;
+    --foreground: #f1f5f9;
+    --muted: #94a3b8;
+    --border: #334155;
+  }
+}
+
+:root[data-theme="dark"] {
+  --background: #0f172a;
+  --surface: #1e293b;
+  --foreground: #f1f5f9;
+  --muted: #94a3b8;
+  --border: #334155;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-primary: var(--color-primary);
+  --color-primary-light: var(--color-primary-light);
+  --color-accent: var(--color-accent);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-arabic: var(--font-noto-kufi-arabic);
+  --font-urdu: var(--font-noto-nastaliq-urdu);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+html[data-locale="ar"] body {
+  font-family: var(--font-noto-kufi-arabic), "Noto Kufi Arabic", sans-serif;
+}
+
+html[data-locale="ur"] body {
+  font-family: var(--font-noto-nastaliq-urdu), "Noto Nastaliq Urdu", sans-serif;
+  line-height: 2;
+}
+
+@keyframes slide-in-from-right {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-in.slide-in-from-right {
+  animation: slide-in-from-right 0.2s ease-out;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
